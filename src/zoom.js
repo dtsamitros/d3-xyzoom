@@ -246,20 +246,6 @@ export default function() {
     var ky = Math.max(ky0, Math.min(ky1, t.ky * (1 + ry * (-1 + Math.pow(2, wheelDelta.apply(this, arguments))))));
     var p = mouse(this);
 
-    // If a scale factor has reached scale extend, sync its value with the other one
-    if (t.kx === kx0) {
-      kx = ky >= kx0 ? kx : kx0;
-    }
-    if (t.kx === kx1) {
-      kx = ky <= kx1 ? kx : kx1;
-    }
-    if (t.ky === ky0) {
-      ky = kx >= ky0 ? ky : ky0;
-    }
-    if (t.ky === ky1) {
-      ky = kx <= ky1 ? ky : ky1;
-    }
-
     // If the mouse is in the same location as before, reuse it.
     // If there were recent wheel events, reset the wheel idle timeout.
     if (g.wheel) {
