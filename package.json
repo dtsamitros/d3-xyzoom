@@ -1,6 +1,6 @@
 {
   "name": "xy-d3-zoom",
-  "version": "1.5.1-rc.2",
+  "version": "1.5.1-rc.5",
   "description": "Pan and zoom SVG, HTML or Canvas using mouse or touch input with different scale factors for x and y.",
   "keywords": [
     "d3",
@@ -10,7 +10,9 @@
     "interaction"
   ],
   "license": "BSD-3-Clause",
-  "main": "build/d3-xyzoom.js",
+  "main": "build/d3-xyzoom.cjs.js",
+  "browser": "build/d3-xyzoom.js",
+  "module": "build/d3-xyzoom.esm.js",
   "jsnext:main": "index",
   "homepage": "https://github.com/dtsamitros/d3-xyzoom",
   "repository": {
@@ -18,7 +20,10 @@
     "url": "https://github.com/dtsamitros/d3-xyzoom.git"
   },
   "scripts": {
-    "pretest": "rm -rf build && mkdir build && rollup -g d3-dispatch:d3,d3-drag:d3,d3-interpolate:d3,d3-selection:d3,d3-transition:d3 -f umd -n d3 -o build/d3-xyzoom.js -- index.js",
+    "pretest": "rm -rf build && mkdir build && npm run build-umd && npm run build-cjs && npm run build-es6",
+    "build-umd": "rollup -g d3-dispatch:d3,d3-drag:d3,d3-interpolate:d3,d3-selection:d3,d3-transition:d3 -f umd -n d3 -o build/d3-xyzoom.js -- index.js",
+    "build-cjs": "rollup -g d3-dispatch:d3,d3-drag:d3,d3-interpolate:d3,d3-selection:d3,d3-transition:d3 -f cjs -n d3 -o build/d3-xyzoom.cjs.js -- index.js",
+    "build-es6": "rollup -g d3-dispatch:d3,d3-drag:d3,d3-interpolate:d3,d3-selection:d3,d3-transition:d3 -f es6 -n d3 -o build/d3-xyzoom.esm.js -- index.js",
     "test": "tape 'test/**/*-test.js'",
     "prepublish": "npm run test && uglifyjs build/d3-xyzoom.js -c -m -o build/d3-xyzoom.min.js",
     "postpublish": "zip -j build/d3-xyzoom.zip -- LICENSE README.md build/d3-xyzoom.js build/d3-xyzoom.min.js"
