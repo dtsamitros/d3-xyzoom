@@ -1,6 +1,6 @@
 {
-  "name": "d3-xyzoom",
-  "version": "1.5.0",
+  "name": "xy-d3-zoom",
+  "version": "1.5.1-rc.2",
   "description": "Pan and zoom SVG, HTML or Canvas using mouse or touch input with different scale factors for x and y.",
   "keywords": [
     "d3",
@@ -12,10 +12,10 @@
   "license": "BSD-3-Clause",
   "main": "build/d3-xyzoom.js",
   "jsnext:main": "index",
-  "homepage": "https://github.com/etiennecrb/d3-xyzoom",
+  "homepage": "https://github.com/dtsamitros/d3-xyzoom",
   "repository": {
     "type": "git",
-    "url": "https://github.com/etiennecrb/d3-xyzoom.git"
+    "url": "https://github.com/dtsamitros/d3-xyzoom.git"
   },
   "scripts": {
     "pretest": "rm -rf build && mkdir build && rollup -g d3-dispatch:d3,d3-drag:d3,d3-interpolate:d3,d3-selection:d3,d3-transition:d3 -f umd -n d3 -o build/d3-xyzoom.js -- index.js",
